@@ -1,1 +1,24 @@
 
+package com.company;
+
+abstract class Employee{
+    public abstract void overall_income();
+    public void income(){
+        System.out.println(1000);
+    }
+}
+class Income extends Employee {
+    public void overall_income() {
+        System.out.println("Overall income: ");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        Income income = new Income();
+        income.overall_income();
+        income.income();
+
+    }
+}
