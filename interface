@@ -1,0 +1,18 @@
+package com.company;
+
+interface ExcellentStudent{
+    int excellentScholarship=1000;
+}
+interface BadStudent{
+    int badScholarship=2000;
+}
+class GoodStudent implements ExcellentStudent,BadStudent{
+    int scholarship=(excellentScholarship+badScholarship)/2;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        GoodStudent student = new GoodStudent();
+        System.out.print(student.scholarship);
+    }
+}
