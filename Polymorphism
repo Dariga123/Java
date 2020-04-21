@@ -1,0 +1,27 @@
+package com.company;
+
+class Shapes{
+    public void draw(){
+        System.out.println("Figure ");
+    }
+}
+class Circle extends Shapes{
+    public void draw() {
+        System.out.println("Circle ");
+    }
+}
+
+class Square extends Shapes{
+    public void draw() {
+        System.out.println("Square");
+    }
+}
+public class Main {
+
+    public static void main(String[] args) {
+	Shapes figure= new Circle();
+	figure.draw();
+	Shapes figure2= new Square();
+	figure2.draw();
+    }
+}
