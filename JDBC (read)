@@ -1,0 +1,34 @@
+package com.company;
+
+import java.sql.*;
+
+class Main {
+
+    public static void main(String[] args) {
+     read(1);
+
+    }
+
+    public static void read(int id) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            //Class.forName("org.postgresql.Driver");
+
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/php2", "root", "");
+//            Connection con = DriverManager.getConnection("jdbc:mysql://host:port/database_name", "user", "password");
+
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from oop2 where p_id =" + id);
+            while (rs.next())
+                System.out.println(rs.getInt(1) + "  " + rs.getString(2) /* + "  " + rs.getString(3) */);
+            con.close();
+
+
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
