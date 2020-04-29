@@ -1,0 +1,35 @@
+package com.company;
+
+import java.sql.*;
+
+class Main {
+
+    public static void create(int id, String name) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            //Class.forName("org.postgresql.Driver");
+
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/php2", "root", "");
+//            Connection con = DriverManager.getConnection("jdbc:mysql://host:port/database_name", "user", "password");
+
+
+            Statement stmt   = con.createStatement();
+            String sql= "INSERT INTO oop2 (p_id,p_name) VALUES (?,?)";
+            PreparedStatement statement=con.prepareStatement(sql);
+            statement.setString(1, String.valueOf(id));
+            statement.setString(2,name);
+            int rowInserted=statement.executeUpdate();
+            if (rowInserted>0) {
+                System.out.println("A new user was inserted successfully!");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public static void main(String[] args){
+        create(3,"Assel");
+    }
+}
