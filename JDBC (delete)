@@ -1,0 +1,34 @@
+
+package com.company;
+
+import java.sql.*;
+
+class Main {
+
+    public static void delete(int id, String name) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            //Class.forName("org.postgresql.Driver");
+
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/php2", "root", "");
+//            Connection con = DriverManager.getConnection("jdbc:mysql://host:port/database_name", "user", "password");
+
+            Statement stmt   = con.createStatement();
+            String sql= "DELETE FROM oop2 WHERE p_name ='Assel'";
+
+            PreparedStatement statement=con.prepareStatement(sql);
+            int rowInserted=statement.executeUpdate();
+            if (rowInserted>0) {
+                System.out.println("The oop2's information has been deleted!");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public static void main(String[] args){
+        delete(3,"Assel");
+    }
+}
