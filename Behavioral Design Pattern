@@ -1,0 +1,84 @@
+package com.company;
+
+import java.util.ArrayList;
+
+abstract class PizzaStore{
+
+    abstract Pizza createPizza(String pizza);
+
+    public Pizza orderPizza(String pizza) {
+            Pizza type= createPizza (pizza);
+            System.out.println("Making pizza " + type.getName());
+            type.prepare();
+            type.bake();
+            type.cut();
+            type.box();
+            return type;
+        }
+    }
+
+    class NYPizza extends PizzaStore {
+        Pizza createPizza(String item) {
+            if (item.equals("cheese")) {
+                return new NYStyle();
+            }  else {
+                return null;
+            }
+        }
+    }
+
+    abstract class Pizza {
+        static String name;
+        static String dough;
+        static String souce;
+        static ArrayList toppings = new ArrayList<String>();
+
+        void prepare() {
+            System.out.println("Preparing " + name);
+            System.out.println("Tossing dough...");
+            System.out.println("Adding sauce...");
+            System.out.println("Adding toppings: ");
+            for (int i = 0; i < toppings.size(); i++) {
+                System.out.println(" " + toppings.get(i));
+            }
+        }
+
+        void bake() {
+            System.out.println("Bake for 25 minutes at 350");
+        }
+
+        void cut() {
+            System.out.println("Cutting the pizza into diagonal slices");
+        }
+
+        void box() {
+            System.out.println("Place pizza in ofﬁcial PizzaStore box");
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+
+    class NYStyle extends Pizza{
+    public NYStyle(){
+        Pizza.name = "NY Style sauce and Cheese Pizza";
+        Pizza.dough = "This Crust Dough";
+        Pizza.souce=" Souce";
+
+        Pizza.toppings.add("Greted Cheese");
+    }
+}
+
+    public class Main{
+        public static void main (String[] args){
+        NYStyle pizza= new NYStyle();
+        NYPizza one = new NYPizza();
+        one.orderPizza("cheese");
+        }
+    }
+
+
+
+
+
